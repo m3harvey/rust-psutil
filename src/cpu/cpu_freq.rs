@@ -5,18 +5,23 @@ use crate::Mhz;
 
 #[cfg_attr(feature = "serde", serde(crate = "renamed_serde"))]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-pub struct CpuFreq {}
+pub struct CpuFreq {
+    current: Mhz,
+    min: Mhz,
+    max: Mhz
+}
 
 impl CpuFreq {
-	pub fn current(&self) -> Mhz {
-		todo!()
-	}
-
-	pub fn min(&self) -> Mhz {
-		todo!()
-	}
-
-	pub fn max(&self) -> Mhz {
-		todo!()
-	}
+    pub fn new(current: Mhz, min: Mhz, max: Mhz) -> Self {
+        CpuFreq { current: current, min: min, max: max }
+    }
+    pub fn current(&self) -> Mhz {
+        self.current
+    }
+    pub fn min(&self) -> Mhz {
+        self.min
+    }
+    pub fn max(&self) -> Mhz {
+        self.max
+    }
 }
